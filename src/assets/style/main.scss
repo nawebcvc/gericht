@@ -1,0 +1,425 @@
+@import './base.scss';
+// @import './media.scss';
+@import './fonts.scss';
+/* // ! Разница между "@import './fonts.scss';" и "@import url(./fonts.scss);" заключается в способе указания пути к файлу со стилями. 
+
+// ! "@import './fonts.scss';" использует относительный путь и указывает на файл "fonts.scss", который находится в той же директории, что и текущий файл со стилями.
+
+// ! "@import url(./fonts.scss);" также указывает на файл "fonts.scss", но использует абсолютный путь, начинающийся с ключевого слова "url". Он может использоваться для указания пути к файлу, который находится в другой директории или на удаленном сервере.
+
+// ! В общем случае, использование относительных путей предпочтительнее, так как они более надежны и не зависят от изменений структуры файловой системы. */
+
+// ! надо импортировать media.scss внутри main.scss, иначе это может привести к проблемам с производительностью и сложности в поддержке кода.
+
+:root {
+  /* fonts */
+  --font_Bstr-R: BestermindRegular, Roboto;
+  --font_CormUp-B: CormorantUpright-Bold, Roboto;
+  --font_CormUp-R: CormorantUpright-Regular, Roboto;
+  --font_CormUp-SB: CormorantUpright-SemiBold, Roboto;
+  --font_OpSns-I: OpenSans-Italic, Roboto;
+  --font_OpSns-R: OpenSans-Regular, Roboto;
+  --font_OpSns-SB: OpenSans-SemiBold, Roboto;
+
+  /* inner size for responsive */
+  --inSize: calc(1vw + 1vh);
+
+  /* colors */
+  --color_white: #ffffff;
+  --color_black: #000000;
+
+  --color_main: #dcca87;
+  --color_desc: #aaaaaa;
+  --color_2ndryText: #f5efdb;
+
+  --color_btnTxt: #0c0b08;
+  --color_btnBg: var(--color_main);
+  --color_btnTxtHover: var(--color_btnBg);
+  --color_btnBgHover: var(--color_btnTxt);
+  --color_date: #fafafa;
+  --color_navBG: var(--color_btnTxt);
+  --gradient_slider: radial-gradient(var(--color_white), #ffffff00);
+  --gradient_lineVert: linear-gradient(var(--color_main), rgba(220, 202, 135, 0.76));
+  --gradient_lineVertHover: linear-gradient(var(--color_white), rgba(255, 255, 255, 0.76));
+
+  /* another colors */
+  --vector: #ababab;
+  --rectangle-28: #c4c4c4;
+  --rectangle-32: #040404;
+  --rectangle-58: #c4c4c4;
+  --g: #272727;
+
+  // --transition_all: ease-in .5s;
+  // transition: var(--transition_all);
+  --transition_text: ease-in .3s;
+
+  --fillAvailable: -webkit-fill-available;
+
+}
+
+#app {
+  height: 100vh;
+  width: 100%;
+  // overflow: hidden;
+}
+
+.container {
+  display: flex;
+  // align-items: center;
+  // justify-content: center;
+}
+
+section .container {
+  height: 100vh;
+}
+
+.wrapper {
+  display: flex;
+  max-width: 1300px;
+  width: 100%;
+  margin: auto;
+}
+
+.slider {
+  width: 2px;
+  height: 57px;
+  background: var(--gradient_slider);
+}
+
+.spoon::after {
+  content: url('../imgs/spoon.svg');
+  position: absolute;
+  height: 9px;
+  width: 40px;
+}
+
+.img100 {
+  width: 100%;
+  height: 100%;
+}
+
+.line {
+  width: 16px;
+  height: 1px;
+  background: var(--color_main);
+}
+
+.lineVert::before {
+  content: '';
+  height: 61px;
+  width: 1px;
+  background-image: var(--gradient_lineVert);
+  transition: background-image var(--transition_text);
+}
+
+.desc,
+.btn,
+.scroll,
+.pages * {
+  font-size: 16px;
+  line-height: 175%;
+  letter-spacing: 0.64px;
+}
+
+.desc {
+  color: var(--color_desc);
+  font-family: var(--font_OpSns-R);
+}
+
+.btn {
+  font-family: var(--font_CormUp-B);
+  color: var(--color_btnTxt);
+  background: var(--color_btnBg);
+  padding: 8px 32px;
+
+  &:hover {
+    color: var(--color_btnTxtHover);
+    background: var(--color_btnBgHover);
+  }
+}
+
+.title {
+  font-family: var(--font_CormUp-SB);
+  font-size: 64px;
+  letter-spacing: 1.92px;
+  color: var(--color_main);
+
+  &,
+  &__info {
+    font-variant-numeric: lining-nums tabular-nums;
+    text-transform: capitalize;
+    line-height: 130%;
+  }
+
+  &__info {
+    font-family: var(--font_CormUp-B);
+    color: var(--color_white);
+    font-size: 23px;
+    // letter-spacing: 0.92px; // ! не похоже на 0.92px
+    letter-spacing: 0.80px;
+    position: relative;
+  }
+}
+
+.sites {
+  left: 57px;
+  top: 52%;
+
+  transform: rotate(-90deg);
+  column-gap: 40px;
+
+  a {
+    font-family: var(--font_OpSns-R);
+    color: var(--color_white);
+    font-size: 18px;
+    line-height: 175%;
+    letter-spacing: 0.72px;
+  }
+}
+
+.pages {
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+
+  .line {
+    padding: unset;
+  }
+
+  * {
+    display: flex;
+    text-transform: capitalize;
+
+    padding: 4px;
+
+    font-variant-numeric: lining-nums tabular-nums;
+    font-family: var(--font_CormUp-SB);
+    letter-spacing: 0.64px;
+  }
+
+  &__left a {
+    color: var(--color_white) !important;
+  }
+
+  &__right a {
+    color: var(--color_2ndryText) !important;
+  }
+}
+
+.scroll {
+  right: 120px;
+  bottom: 10px;
+  flex-direction: column;
+  row-gap: 24px;
+
+  color: var(--color_main);
+  font-family: var(--font_CormUp-B);
+  text-transform: uppercase;
+
+  &:hover {
+    color: var(--color_2ndryText) !important;
+
+    &.lineVert::before {
+      // animation: lineVertAn .5s ease;
+      background-image: var(--gradient_lineVertHover);
+    }
+
+    /* @keyframes lineVertAn {
+      100% {
+        background-image: var(--gradient_lineVertHover);
+      }
+    } */
+  }
+
+}
+
+.sites,
+.pages,
+.scroll {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  z-index: 99;
+}
+
+.nav {
+
+  position: fixed;
+  top: 0;
+  width: 100%;
+
+  background: var(--color_navBG);
+
+  z-index: 99;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-wrap: nowrap;
+  }
+
+  &__logo {
+    padding: 32px 0;
+    font-family: var(--font_CormUp-B);
+    font-size: 44px;
+    line-height: 130%;
+    letter-spacing: 1.76px;
+    text-transform: uppercase;
+  }
+
+  &__list {
+    margin-left: 165px;
+    column-gap: 32px;
+    font-family: var(--font_OpSns-R);
+    letter-spacing: 0.64px;
+  }
+
+  &__right {
+    align-items: center;
+    column-gap: 48px;
+    font-family: var(--font_OpSns-SB);
+    letter-spacing: 0.8px;
+    position: relative;
+  }
+
+  &__list,
+  &__right {
+    display: flex;
+    text-transform: capitalize;
+    font-size: 16px;
+    line-height: 175%;
+  }
+}
+
+#page_01 {
+  margin-top: 34px;
+}
+
+.hero {
+  position: relative;
+
+  &__body {
+    column-gap: 180px;
+  }
+
+  &__left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+
+    max-width: 453px;
+    width: 100%;
+
+    .title {
+      font-family: var(--font_CormUp-B);
+      font-size: 90px;
+      // letter-spacing: 3.6px;
+      letter-spacing: 3.5px;
+      margin-bottom: 32px;
+
+      & span {
+        letter-spacing: 2.5px;
+      }
+
+      &__info {
+        margin-bottom: 25px;
+
+        &.spoon::after {
+          top: 24px;
+          left: 0;
+        }
+      }
+
+    }
+
+    .desc {
+      margin-bottom: 32px;
+    }
+  }
+
+  &__right {
+    max-width: 667px;
+    max-height: 736px;
+  }
+
+}
+
+.aboutUs {
+
+  .container {
+    margin-top: 86px;
+  }
+
+  &__body {
+    position: relative;
+    place-items: center;
+    padding-right: 31px;
+  }
+
+  .title,
+  &__center {
+    margin-bottom: 17px;
+  }
+
+  &__left {
+    margin-right: 74px;
+    text-align: right;
+
+    .spoon::after {
+      right: 0;
+      transform: rotateY(180deg);
+    }
+
+    .btn {
+      margin-left: auto;
+    }
+  }
+
+  &__center {
+    max-height: 703px;
+    max-width: 84px;
+  }
+
+  &__right {
+    margin-left: 96px;
+    text-align-last: left;
+
+    .spoon::after {
+      left: 0;
+    }
+
+    .btn {
+      margin-right: auto;
+    }
+  }
+
+  &__left,
+  &__right {
+    display: flex;
+    flex-direction: column;
+    row-gap: 32px;
+    position: relative;
+  }
+
+  &__bg {
+    position: absolute;
+    max-width: 391px;
+    max-height: 415px;
+    right: 0;
+    top: 0;
+    left: -15px;
+    bottom: 26px;
+    margin: auto;
+    z-index: -1;
+  }
+
+  .spoon::after {
+    top: 40px;
+  }
+
+  .btn {
+    max-width: fit-content;
+  }
+}

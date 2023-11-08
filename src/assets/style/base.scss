@@ -1,0 +1,65 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: unset; // * что-бы убрать у всех тегов имени тега свои дефолтные цвета
+  font: unset; // ? точно такая же проблема, не применяются стили если не поставить это
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--color_white);
+  background: var(--color_black);
+  font-style: normal;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+button,
+input,
+textarea,
+select {
+  border: none;
+  outline: none;
+  background: transparent;
+  resize: none;
+  font: inherit;
+}
+
+a,
+p,
+span {
+  transition: var(--transition_text);
+
+  &:hover {
+    color: var(--color_main) !important;
+  }
+}
+
+button {
+  cursor: pointer;
+}
+
+.container {
+  max-width: 1710px; // * размер (ширина) контента в макете
+  // * допустим если ширина 1100px то нужно прописать -> 1140px => т.к нужно учитывать постоянные (не менять значения этого свойства т.к она должна быть таким) значения padding с правой (15px) и левой (15px) стороны в общем 30px
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 15px; // ! постоянные значения у этого свойства для .container - не менять никогда при любых обстоятельствах в любом макете
+}

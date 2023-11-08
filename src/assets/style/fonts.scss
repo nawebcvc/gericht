@@ -1,0 +1,19 @@
+$allFonts: ("BestermindRegular", 400),
+("CormorantUpright-Bold", 700),
+("CormorantUpright-Regular", 400),
+("CormorantUpright-SemiBold", 600),
+("OpenSans-Italic", 400),
+("OpenSans-Regular", 400),
+("OpenSans-SemiBold", 600); // переменные пишутся с знаком доллар
+
+@each $name,
+$weight in $allFonts {
+    @font-face {
+        font-family: '#{$name}';
+        src: url('../fonts/#{$name}.ttf');
+        font-weight: $weight;
+        font-display: swap;
+    }
+}
+
+// циклы each 
