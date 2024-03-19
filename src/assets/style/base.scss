@@ -15,7 +15,7 @@ html {
 body {
   min-height: 100vh;
   color: var(--color_white);
-  background: var(--color_black);
+  background: var(--color_bodyBg);
   font-style: normal;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -42,10 +42,9 @@ select {
   font: inherit;
 }
 
-a,
-p,
-span {
+a, input[type="submit"], .btn {
   transition: var(--transition_text);
+  cursor: pointer;
 
   &:hover {
     color: var(--color_main) !important;
